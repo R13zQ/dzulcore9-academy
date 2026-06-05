@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DzulCore9 Future AI Academy - Horizon 2035</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Orbitron untuk Cyber-Vibe, Plus Jakarta Sans untuk Readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --font-cyber: 'Orbitron', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+        body {
+            font-family: var(--font-sans);
+            background-color: #020208;
+            overflow-x: hidden;
+        }
+        .font-cyber {
+            font-family: var(--font-cyber);
+            letter-spacing: 0.05em;
+        }
+        
+        /* 1. MENGGUNAKAN GAMBAR 1.JPG SEBAGAI LATAR BELAKANG KOTA FUTURISTIK */
+        .city-bg-2035 {
+            background: linear-gradient(to bottom, rgba(2, 2, 8, 0.4) 30%, rgba(2, 2, 8, 0.95)), 
+                        url('gambar 1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* ANIMASI SINAR LASER TEPI KOTAK (BORDER LASER GLOW) */
+        .laser-box {
+            position: relative;
+            background: rgba(8, 8, 20, 0.85);
+            border-radius: 16px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .laser-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, var(--laser-color-1), var(--laser-color-2), transparent 60%);
+            animation: rotateLaser 4s linear infinite;
+            z-index: -2;
+        }
+        .laser-box::after {
+            content: '';
+            position: absolute;
+            inset: 3px; 
+            background: #060613;
+            border-radius: 13px;
+            z-index: -1;
+        }
+
+        @keyframes rotateLaser {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Variasi Warna Laser Berputar */
+        .laser-cyan-magenta {
+            --laser-color-1: #00f2ff;
+            --laser-color-2: #ff007f;
+        }
+        .laser-purple-lime {
+            --laser-color-1: #7000ff;
+            --laser-color-2: #39ff14;
+        }
+        .laser-amber-cyan {
+            --laser-color-1: #ffaa00;
+            --laser-color-2: #00f2ff;
+        }
+        .laser-magenta-emerald {
+            --laser-color-1: #ff007f;
+            --laser-color-2: #00ff88;
+        }
+
+        /* Efek Lampu Laser Latar Belakang Bersinggungan */
+        .bg-laser-line {
+            position: absolute;
+            width: 150%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+            filter: drop-shadow(0 0 10px var(--line-color));
+            animation: drift 8s infinite linear;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes drift {
+            0% { transform: translate(-10%, -20px) rotate(var(--rot)) scaleX(0.7); opacity: 0.2; }
+            50% { transform: translate(10%, 20px) rotate(var(--rot)) scaleX(1.3); opacity: 0.8; }
+            100% { transform: translate(-10%, -20px) rotate(var(--rot)) scaleX(0.7); opacity: 0.2; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020208; }
+        ::-webkit-scrollbar-thumb { background: #1a1a3a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f2ff; }
+    </style>
+</head>
+<body class="text-slate-200 antialiased">
+
+    <!-- EFEK LASER UTAMA DI LATAR BELAKANG -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-40">
+        <div class="bg-laser-line" style="--line-color: #00f2ff; --rot: -12deg; top: 15%;"></div>
+        <div class="bg-laser-line" style="--line-color: #ff007f; --rot: 20deg; top: 45%;"></div>
+        <div class="bg-laser-line" style="--line-color: #39ff14; --rot: -5deg; top: 75%;"></div>
+    </div>
+
+    <!-- NAVBAR HEADER ADAPTIF -->
+    <header class="fixed top-0 w-full z-50 bg-opacity-80 bg-[#020208] backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-500 to-fuchsia-500 flex items-center justify-center p-2 shadow-[0_0_15px_rgba(0,242,255,0.5)]">
+                    <span class="text-white font-black font-cyber text-lg">D</span>
+                </div>
+                <span class="font-cyber font-black text-lg sm:text-xl tracking-wider text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-400 to-fuchsia-500">
+                    DZULCORE<span class="text-cyan-400 font-sans font-bold">9</span>
+                </span>
+            </div>
+            
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 font-medium text-sm text-slate-400">
+                <a href="#filosofi" class="hover:text-cyan-400 transition-colors">Filosofi</a>
+                <a href="#core-engine" class="hover:text-cyan-400 transition-colors">Core Engine</a>
+                <a href="#pilar" class="hover:text-cyan-400 transition-colors">4 Pilar</a>
+                <a href="#kurikulum" class="hover:text-cyan-400 transition-colors">Timeline Kurikulum</a>
+                <a href="#tools" class="hover:text-cyan-400 transition-colors">Peta Tools</a>
+            </nav>
+            
+            <div>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20DzulCore9,%20saya%20tertarik%20untuk%20bergabung%20ke%20dalam%20ekosistem%20Future%20AI%20Academy." 
+                   target="_blank" 
+                   class="font-cyber text-[10px] sm:text-xs uppercase font-bold px-4 sm:px-5 py-2.5 inline-flex items-center justify-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:shadow-[0_0_25px_rgba(0,242,255,0.7)] transition-all transform hover:scale-105">
+                    Join Ecosystem
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION - BERBASIS BG GAMBAR 1.JPG -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 city-bg-2035 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#020208] via-transparent to-transparent z-10"></div>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-20 mt-8 sm:mt-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 mb-6 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                <span class="text-[10px] sm:text-xs font-semibold text-cyan-300 uppercase tracking-widest font-cyber">DZULCORE9 AI VISION 2035</span>
+            </div>
+            
+            <h1 class="font-cyber font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-white uppercase tracking-tight leading-none mb-6">
+                Membangun Arsitek <br class="hidden sm:inline">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-indigo-400">
+                    Sistem Masa Depan
+                </span>
+            </h1>
+            
+            <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed px-2">
+                Mengubah generasi muda dari sekadar Konsumen Konten menjadi Creator Digital, Builder, dan System Architect berbasis Artificial Intelligence.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0">
+                <a href="#kurikulum" class="w-full sm:w-auto font-cyber font-bold px-8 py-4 rounded-lg bg-white text-slate-950 shadow-[0_4px_20px_rgba(255,255,255,0.3)] hover:bg-cyan-400 hover:text-slate-950 hover:shadow-[0_0_30px_rgba(0,242,255,0.6)] transition-all text-center text-sm">
+                    Jelajahi Kurikulum
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20DzulCore9,%20saya%20ingin%20tahu%20lebih%20banyak%20mengenai%20Ecosystem%20AI%20Academy." 
+                   target="_blank" 
+                   class="w-full sm:w-auto font-cyber font-bold px-8 py-4 rounded-lg bg-transparent border border-white/20 text-white hover:bg-white/5 transition-all text-center text-sm">
+                    Hubungi Admin
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE ENGINE - BERBASIS INTIGRATION GAMBAR 2.JPG -->
+    <section id="core-engine" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 relative z-20">
+        <div class="laser-box laser-cyan-magenta p-1 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 overflow-hidden">
+            
+            <!-- FRAME RESOLUSI UNTUK GAMBAR 2.JPG -->
+            <div class="w-full lg:w-1/2 relative h-[320px] sm:h-[420px] lg:h-[500px] rounded-xl overflow-hidden bg-[#04040d] border border-white/5">
+                <img src="gambar 2.jpg" 
+                     alt="DzulCore9 AI Neural Core Engine" 
+                     class="w-full h-full object-cover filter brightness-105 contrast-110 object-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+
+                <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 rounded-xl bg-black/85 border border-cyan-400/30 backdrop-blur-md z-10">
+                    <p class="font-cyber text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">DzulCore9 Neural Interface</p>
+                    <p class="text-white text-xs sm:text-sm font-semibold">Interactive Neural Education untuk membantu dan memproyeksikan kemampuan imajinasi, kreativitas dan analitis komputasi sistem secara real-time langsung di hadapan para siswa.</p>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 p-4 lg:p-6">
+                <span class="text-xs sm:text-sm font-cyber font-bold text-fuchsia-400 uppercase tracking-widest">Ecosystem Hub & Forum</span>
+                <h2 class="font-cyber font-black text-2xl sm:text-3xl md:text-4xl uppercase text-white mt-2 mb-6 leading-tight">
+                    Semangat Akselerasi <br><span class="text-cyan-400">Komunitas AI Indonesia</span>
+                </h2>
+                <p class="text-slate-300 leading-relaxed text-sm sm:text-base mb-6 font-medium">
+                    Mempersiapkan generasi teknologi tinggi tahun 2035, anak-anak tidak lagi belajar secara pasif dan tidak sebagai konsumen konten yang kurang bermanfaat. akan tetapi kita bekali mereka untuk dapat berakselerasi dan belajar dalam forum diskusi yang hidup, mereka dengan penuh tawa, keceriaan, dan ambisi besar bahu-membahu merancang arsitektur kecerdasan artifisial, memprogram otomatisasi, dan memvalidasi purwarupa startup mereka bersama komunitas yang suportif.
+                </p>
+                <div class="flex flex-wrap gap-2 sm:gap-3">
+                    <span class="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">⚛️ Neural Education</span>
+                    <span class="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">⚡ Laser Intersection</span>
+                    <span class="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">🚀 Tech Acceleration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION FILOSOFI -->
+    <section id="filosofi" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="font-cyber font-black text-2xl sm:text-3xl md:text-4xl uppercase text-white tracking-wide mb-6">
+                    Filosofi <br><span class="text-fuchsia-500">System Thinking</span>
+                </h2>
+                <p class="text-slate-400 leading-relaxed mb-6 text-sm sm:text-base md:text-lg">
+                    Masalah generasi sekarang bukan kekurangan aplikasi; mereka dibanjiri aplikasi. Yang kurang adalah kemampuan memahami informasi, alur kerja, sebab akibat, prioritas, dan otomatisasi.
+                </p>
+                <div class="p-6 rounded-xl bg-gradient-to-r from-indigo-950/40 to-slate-900/40 border border-indigo-500/20">
+                    <p class="text-cyan-400 font-cyber font-bold text-xs uppercase tracking-wider mb-2">Transformasi Fundamental:</p>
+                    <p class="text-xl sm:text-2xl text-white font-black italic tracking-wide">"User &rarr; Creator &rarr; Builder &rarr; System Architect"</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div class="laser-box laser-cyan-magenta p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl font-black font-cyber text-cyan-400 mb-2">13+</div>
+                    <div class="text-lg sm:text-xl font-extrabold text-white mb-2 uppercase tracking-wide">Target Usia</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Mampu mencerna pemikiran sistem kompleks jika dibimbing sejak dini.</div>
+                </div>
+                <div class="laser-box laser-purple-lime p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl font-black font-cyber text-fuchsia-400 mb-2">24</div>
+                    <div class="text-lg sm:text-xl font-extrabold text-white mb-2 uppercase tracking-wide">Minggu</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Kurikulum intensif, terstruktur, dan mendalam mendesain solusi solusi makro.</div>
+                </div>
+                <div class="laser-box laser-amber-cyan p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl font-black font-cyber text-indigo-400 mb-2">9+</div>
+                    <div class="text-lg sm:text-xl font-extrabold text-white mb-2 uppercase tracking-wide">Output</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Koleksi portofolio nyata mahakarya yang siap divalidasi publik.</div>
+                </div>
+                <div class="laser-box laser-magenta-emerald p-6 sm:p-8 text-center">
+                    <div class="text-4xl sm:text-5xl font-black font-cyber text-emerald-400 mb-2">100%</div>
+                    <div class="text-lg sm:text-xl font-extrabold text-white mb-2 uppercase tracking-wide">Praktik</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Berbasis penugasan proyek riil & panggung festival kreasi digital.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 PILAR PROGRAM -->
+    <section id="pilar" class="py-20 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-cyber font-black text-2xl sm:text-3xl md:text-4xl uppercase text-white tracking-wider mb-4">
+                    4 Pilar Utama Program
+                </h2>
+                <p class="text-sm sm:text-base text-slate-400">Kombinasi sains, teknologi, seni, dan karya nyata untuk membangun kompetensi jangka panjang.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="laser-box laser-cyan-magenta p-6 sm:p-8">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-6 font-cyber text-cyan-400 font-bold text-lg">01</div>
+                    <h3 class="font-cyber font-black text-lg sm:text-xl text-white uppercase mb-3">Creative Creator</h3>
+                    <p class="text-sm sm:text-base text-slate-400 leading-relaxed font-medium">Ekspresi artistik digital tingkat tinggi lewat penguasaan penuh produksi Musik, Desain Visual, dan Film Pendek.</p>
+                </div>
+                <div class="laser-box laser-purple-lime p-6 sm:p-8">
+                    <div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/30 flex items-center justify-center mb-6 font-cyber text-fuchsia-400 font-bold text-lg">02</div>
+                    <h3 class="font-cyber font-black text-lg sm:text-xl text-white uppercase mb-3">AI Collaborator</h3>
+                    <p class="text-sm sm:text-base text-slate-400 leading-relaxed font-medium">Menjadikan Advanced Artificial Intelligence (Prompting) sebagai partner berpikir taktis untuk efisiensi belajar.</p>
+                </div>
+                <div class="laser-box laser-amber-cyan p-6 sm:p-8">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center mb-6 font-cyber text-indigo-400 font-bold text-lg">03</div>
+                    <h3 class="font-cyber font-black text-lg sm:text-xl text-white uppercase mb-3">System Builder</h3>
+                    <p class="text-sm sm:text-base text-slate-400 leading-relaxed font-medium">Melatih pembuatan Dashboard data interaktif, pemetaan informasi logis, dan Workflow Automation.</p>
+                </div>
+                <div class="laser-box laser-magenta-emerald p-6 sm:p-8">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-6 font-cyber text-emerald-400 font-bold text-lg">04</div>
+                    <h3 class="font-cyber font-black text-lg sm:text-xl text-white uppercase mb-3">Future Entrepreneur</h3>
+                    <p class="text-sm sm:text-base text-slate-400 leading-relaxed font-medium">Mengasah kepekaan pencarian solusi kreatif (Problem Solving) untuk mengubah purwarupa ide menjadi nilai bisnis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TIMELINE KURIKULUM INTERAKTIF -->
+    <section id="kurikulum" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 relative z-20">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="font-cyber font-black text-2xl sm:text-3xl md:text-4xl uppercase text-white tracking-wider mb-4">
+                Mastery Timeline & Kurikulum
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400">Klik tombol bulan di bawah untuk melihat rincian materi mingguan, aktivitas, dan output ekosistem.</p>
+            
+            <div class="flex flex-wrap justify-center gap-2 mt-8 p-1.5 rounded-xl bg-slate-900/60 border border-white/5 max-w-2xl mx-auto">
+                <button onclick="switchMonth(1)" id="btn-m1" class="month-btn px-3 sm:px-5 py-2 rounded-lg text-[10px] sm:text-xs font-cyber font-bold uppercase transition-all bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">Bulan 1</button>
+                <button onclick="switchMonth(2)" id="btn-m2" class="month-btn px-3 sm:px-5 py-2 rounded-lg text-[10px] sm:text-xs font-cyber font-bold uppercase transition-all text-slate-400 hover:text-white">Bulan 2</button>
+                <button onclick="switchMonth(3)" id="btn-m3" class="month-btn px-3 sm:px-5 py-2 rounded-lg text-[10px] sm:text-xs font-cyber font-bold uppercase transition-all text-slate-400 hover:text-white">Bulan 3</button>
+                <button onclick="switchMonth(4)" id="btn-m4" class="month-btn px-3 sm:px-5 py-2 rounded-lg text-[10px] sm:text-xs font-cyber font-bold uppercase transition-all text-slate-400 hover:text-white">Bulan 4</button>
+                <button onclick="switchMonth(5)" id="btn-m5" class="month-btn px-3 sm:px-5 py-2 rounded-lg text-[10px] sm:text-xs font-cyber font-bold uppercase transition-all text-slate-400 hover:text-white">Bulan 5</button>
+                <button onclick="switchMonth(6)" id="btn-m6" class="month-btn px-3 sm:px-5 py-2 rounded-lg text-[10px] sm:text-xs font-cyber font-bold uppercase transition-all text-slate-400 hover:text-white">Bulan 6</button>
+            </div>
+        </div>
+
+        <div class="laser-box laser-cyan-magenta p-1">
+            <div class="bg-[#050511] p-4 sm:p-8 md:p-12 rounded-2xl min-h-[420px]">
+                
+                <!-- BULAN 1 -->
+                <div id="month-content-1" class="month-pane space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                        <div>
+                            <span class="text-xs sm:text-sm font-cyber font-bold uppercase tracking-widest text-cyan-400">Fase Eksplorasi</span>
+                            <h3 class="text-2xl sm:text-3xl font-cyber font-black text-white uppercase mt-1">Bulan 1: Digital Identity & AI</h3>
+                        </div>
+                        <div class="px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[10px] sm:text-xs font-cyber text-cyan-300 font-bold self-start md:self-center">Misi: Menemukan Identitas Kreatif</div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 1</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Personal Mapping</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Mengenal diri, bakat alami, dan pemetaan visi peradaban digital.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-cyan-400 font-bold">Output: Creative Profile</span><span class="text-slate-500">Tools: Notion</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 2</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">AI Fundamentals</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Penguasaan dasar rekayasa instruksi terperinci (*prompting*).</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-cyan-400 font-bold">Output: Prompt Portfolio</span><span class="text-slate-500">Tools: ChatGPT</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 3</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Digital Branding</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Mendesain representasi identitas avatar digital profesional.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-cyan-400 font-bold">Output: AI Avatar</span><span class="text-slate-500">Tools: Canva & GPT</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 4</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Website Builder</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Membangun arsitektur situs portofolio personal mandiri online.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-cyan-400 font-bold">Output: Portfolio Web</span><span class="text-slate-500">Tools: Bolt/Replit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BULAN 2 -->
+                <div id="month-content-2" class="month-pane space-y-8 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                        <div>
+                            <span class="text-xs sm:text-sm font-cyber font-bold uppercase tracking-widest text-fuchsia-400">Fase Kreatif Visual</span>
+                            <h3 class="text-2xl sm:text-3xl font-cyber font-black text-white uppercase mt-1">Bulan 2: Visual Creator</h3>
+                        </div>
+                        <div class="px-4 py-1.5 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-[10px] sm:text-xs font-cyber text-fuchsia-300 font-bold self-start md:self-center">Misi: Belajar Membuat Karya Visual Komprehensif</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 5</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Design Thinking</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Mendesain poster digital bertema masa depan futuristik.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-fuchsia-400 font-bold">Output: Poster Digital</span><span class="text-slate-500">Tools: Canva</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 6</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">AI Art</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Eksplorasi pembuatan karakter fiksi terarah bertenaga AI.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-fuchsia-400 font-bold">Output: Character Design</span><span class="text-slate-500">Tools: Image AI</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 7</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Comic Production</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Menyusun jalan cerita komik bergambar ke platform digital.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-fuchsia-400 font-bold">Output: Digital Comic</span><span class="text-slate-500">Tools: Canva</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 8</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Portfolio Design</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Kurasi pameran portofolio seni digital terlengkap.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-fuchsia-400 font-bold">Output: Art Portfolio</span><span class="text-slate-500">Tools: Canva</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BULAN 3 -->
+                <div id="month-content-3" class="month-pane space-y-8 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                        <div>
+                            <span class="text-xs sm:text-sm font-cyber font-bold uppercase tracking-widest text-indigo-400">Fase Produksi Multimedia</span>
+                            <h3 class="text-2xl sm:text-3xl font-cyber font-black text-white uppercase mt-1">Bulan 3: Music & Film Creator</h3>
+                        </div>
+                        <div class="px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-[10px] sm:text-xs font-cyber text-indigo-300 font-bold self-start md:self-center">Misi: Menggabungkan Seni Audio & Video</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 9</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">AI Music</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Mengembangkan trek musik instrumental berirama modern.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-indigo-400 font-bold">Output: Instrumental</span><span class="text-slate-500">Tools: Suno</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 10</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Songwriting</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Penulisan lirik lagu orisinal emosional dipadukan vokal AI.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-indigo-400 font-bold">Output: Lagu Original</span><span class="text-slate-500">Tools: Suno + GPT</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 11</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Film Story</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Pembuatan skenario cerita sinematik terstruktur logis.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-indigo-400 font-bold">Output: Script Film</span><span class="text-slate-500">Tools: ChatGPT</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 12</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Video Editing</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Teknik potong klip, sinkronisasi audio, dan color grading.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-indigo-400 font-bold">Output: Short Movie</span><span class="text-slate-500">Tools: CapCut</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BULAN 4 -->
+                <div id="month-content-4" class="month-pane space-y-8 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                        <div>
+                            <span class="text-xs sm:text-sm font-cyber font-bold uppercase tracking-widest text-emerald-400">Fase System Thinking</span>
+                            <h3 class="text-2xl sm:text-3xl font-cyber font-black text-white uppercase mt-1">Bulan 4: System Builder</h3>
+                        </div>
+                        <div class="px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] sm:text-xs font-cyber text-emerald-300 font-bold self-start md:self-center">Misi: Memahami Arsitektur & Otomatisasi</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 13</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Apa Itu Sistem?</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Membedah relasi sistem logistik kantin, perpustakaan, & sekolah.</p>
+                            <div class="flex justify-between items-center text-xs pt-2 border-t border-white/5"><span class="text-emerald-400 font-bold">Output: System Map</span><span class="text-slate-500">Miro</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 14</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Data Collection</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Membangun skema formulir digital penangkap variabel data.</p>
+                            <div class="flex justify-between items-center text-xs pt-2 border-t border-white/5"><span class="text-emerald-400 font-bold">Output: Smart Form</span><span class="text-slate-500">Tally / Forms</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 15</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Dashboard Thinking</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Transformasi data statis mentah menjadi sajian visual grafik informatif.</p>
+                            <div class="flex justify-between items-center text-xs pt-2 border-t border-white/5"><span class="text-emerald-400 font-bold">Output: Dashboard</span><span class="text-slate-500">Looker / Notion</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 16</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Workflow Automation</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Webhook trigger: input form memicu otomatisasi data email.</p>
+                            <div class="flex justify-between items-center text-xs pt-2 border-t border-white/5"><span class="text-emerald-400 font-bold">Output: Auto Workflow</span><span class="text-slate-500">n8n</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BULAN 5 -->
+                <div id="month-content-5" class="month-pane space-y-8 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                        <div>
+                            <span class="text-xs sm:text-sm font-cyber font-bold uppercase tracking-widest text-amber-400">Fase Kewirausahaan</span>
+                            <h3 class="text-2xl sm:text-3xl font-cyber font-black text-white uppercase mt-1">Bulan 5: Future Entrepreneur</h3>
+                        </div>
+                        <div class="px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] sm:text-xs font-cyber text-amber-300 font-bold self-start md:self-center">Misi: Mengubah Karya Menjadi Produk Bernilai</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 17</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Problem Discovery</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Observasi langsung guna mendefinisikan peta masalah sekitar.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-amber-400 font-bold">Output: Problem Map</span><span class="text-slate-500">Notion</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 18</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">AI Brainstorming</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Menguji hipotesis kelayakan nilai ekonomi dari rancangan solusi.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-amber-400 font-bold">Output: Startup Canvas</span><span class="text-slate-500">ChatGPT</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 19</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Prototype Design</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Pengembangan purwarupa produk minimal layak jual (MVP).</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-amber-400 font-bold">Output: MVP Prototype</span><span class="text-slate-500">Figma/Canva</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 20</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Pitch Deck</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Pembuatan slide presentasi bisnis ringkas berskala profesional.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-amber-400 font-bold">Output: Pitch Deck</span><span class="text-slate-500">Canva</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BULAN 6 -->
+                <div id="month-content-6" class="month-pane space-y-8 hidden">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 gap-2">
+                        <div>
+                            <span class="text-xs sm:text-sm font-cyber font-bold uppercase tracking-widest text-red-400">Fase Selebrasi Karya</span>
+                            <h3 class="text-2xl sm:text-3xl font-cyber font-black text-white uppercase mt-1">Bulan 6: Future Builder Festival</h3>
+                        </div>
+                        <div class="px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-[10px] sm:text-xs font-cyber text-red-300 font-bold self-start md:self-center">Misi: Menampilkan Hasil Karya ke Dunia Publik</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 21</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Project Planning</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Finalisasi dan kurasi matang rencana teknis tata ruang pameran.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-red-400 font-bold">Output: Blueprint</span><span class="text-slate-500">Notion</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 22</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Development</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Sentuhan akhir penyempurnaan kode aplikasi dashboard ekosistem.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-red-400 font-bold">Output: Final MVP</span><span class="text-slate-500">All Tools</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 23</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Testing & Feedback</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Uji keandalan aplikasi serta perekaman respon umpan balik user.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-red-400 font-bold">Output: Report</span><span class="text-slate-500">Google Forms</span></div>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/5 border border-white/5">
+                            <div class="text-xs font-cyber font-bold text-slate-400 mb-2">Minggu 24</div>
+                            <h4 class="font-extrabold text-white mb-3 text-lg">Demo Day</h4>
+                            <p class="text-sm text-slate-400 mb-4 font-medium">Aktivitas: Presentasi panggung akbar mandiri dihadapan orang tua & publik.</p>
+                            <div class="flex flex-col gap-1 pt-3 border-t border-white/5 text-xs"><span class="text-red-400 font-bold">Output: Showcase</span><span class="text-slate-500">All Tools</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION PETA TOOLS -->
+    <section id="tools" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 relative z-20">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="font-cyber font-black text-2xl sm:text-3xl md:text-4xl uppercase text-white tracking-wider mb-4">
+                Peta Kurikulum & Ekosistem Tools
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400">Penguasaan berjenjang dari aplikasi siap pakai hingga arsitektur otomatisasi rumit.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="laser-box laser-cyan-magenta p-6 sm:p-8">
+                <div class="text-base sm:text-lg font-cyber font-black text-cyan-400 mb-4 uppercase tracking-wider">Season 1: Wajib (Essential)</div>
+                <ul class="space-y-3 font-semibold text-sm sm:text-base">
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">ChatGPT</span><span class="text-xs text-slate-400">AI Assistant</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Canva</span><span class="text-xs text-slate-400">Desain Visual</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">CapCut</span><span class="text-xs text-slate-400">Video Editing</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Google Forms</span><span class="text-xs text-slate-400">Data Capture</span></li>
+                    <li class="flex items-center justify-between py-1.5"><span class="text-white">Notion</span><span class="text-xs text-slate-400">Knowledge Mgmt</span></li>
+                </ul>
+            </div>
+            <div class="laser-box laser-purple-lime p-6 sm:p-8">
+                <div class="text-base sm:text-lg font-cyber font-black text-fuchsia-400 mb-4 uppercase tracking-wider">Season 2: Builder Framework</div>
+                <ul class="space-y-3 font-semibold text-sm sm:text-base">
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Lovable</span><span class="text-xs text-slate-400">Website Builder</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Bolt.new</span><span class="text-xs text-slate-400">App Builder</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Replit</span><span class="text-xs text-slate-400">Coding AI</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Tally</span><span class="text-xs text-slate-400">Smart Forms</span></li>
+                    <li class="flex items-center justify-between py-1.5"><span class="text-white">Looker Studio</span><span class="text-xs text-slate-400">Data Dashboard</span></li>
+                </ul>
+            </div>
+            <div class="laser-box laser-amber-cyan p-6 sm:p-8">
+                <div class="text-base sm:text-lg font-cyber font-black text-indigo-400 mb-4 uppercase tracking-wider">Season 3: Future Architect</div>
+                <ul class="space-y-3 font-semibold text-sm sm:text-base">
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">n8n</span><span class="text-xs text-slate-400">Workflow Automation</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Suno</span><span class="text-xs text-slate-400">AI Music</span></li>
+                    <li class="flex items-center justify-between py-1.5 border-b border-white/5"><span class="text-white">Miro</span><span class="text-xs text-slate-400">System Mapping</span></li>
+                    <li class="flex items-center justify-between py-1.5"><span class="text-white">Figma</span><span class="text-xs text-slate-400">UI/UX Design</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-white/5 bg-[#010103] relative z-20 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 DZULCORE9 Future AI Academy. Horizon Roadmap 2035.</p>
+            <p class="font-cyber uppercase tracking-widest text-slate-400">Architected for Future Leaders</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE TABS SCRIPT -->
+    <script>
+        function switchMonth(monthNumber) {
+            const panes = document.querySelectorAll('.month-pane');
+            panes.forEach(pane => pane.classList.add('hidden'));
+
+            const buttons = document.querySelectorAll('.month-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-400', 'hover:text-white');
+            });
+
+            document.getElementById(`month-content-${monthNumber}`).classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`btn-m${monthNumber}`);
+            activeBtn.classList.remove('text-slate-400', 'hover:text-white');
+            activeBtn.classList.add('bg-gradient-to-r', 'from-cyan-500', 'to-blue-600', 'text-white', 'shadow-md');
+        }
+    </script>
+</body>
+</html>
